@@ -19,6 +19,11 @@ export default {
     click() {
       if (this.toggleMode) {
         this.toggled = !this.toggled;
+        this.$emit('toggled', {
+          toggled: this.toggled
+        });
+      } else {
+        this.$emit('click');
       }
     }
   }

@@ -1,38 +1,31 @@
 <template>
-  <div class="map-main-panel">
-    <ButtonC
-      class="button"
-      v-on:click="detailsClick"
-      v-bind:text="'Details'"
-      v-bind:toggleMode="true"
-    />
-  </div>
+  <v-toolbar dense>
+    <v-btn-toggle multiple>
+      <v-btn v-model="toggleDetails" small>{{ buttonTexts.details }}</v-btn>
+      <v-btn v-model="toggleAddLayer" small>{{ buttonTexts.addLayer }}</v-btn>
+    </v-btn-toggle>
+  </v-toolbar>
 </template>
 
 <script>
-import ButtonC from './ButtonC.vue';
 export default {
-  components: {
-    ButtonC
+  data() {
+    return {
+      buttonTexts: {
+        details: 'Details',
+        addLayer: 'Add layer'
+      },
+      toggleDetails: false,
+      toggleAddLayer: false
+    };
   },
-  methods: {
-    detailsClick() {
-      this.$store.ac;
+  watch: {
+    toggleDetails(newValue) {
+      this.$store.dispatch('leftPanel/SET_VISIBLE', newValue);
+    },
+    toggleAddLayer(newValue) {
+      this.$store.dispatch('addLayerForm/SET_VISIBLE', newValue);
     }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.map-main-panel {
-  display: flex;
-  flex-direction: row;
-  padding: 4px;
-}
-
-.button {
-  flex-basis: 50px;
-}
-</style>
-
-

@@ -12,6 +12,8 @@
     "mapbox-gl": "^0.53.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vuetify": "^1.5.12",
+    "vuetify-loader": "^1.2.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -20,11 +22,16 @@
     "@vue/cli-service": "^3.6.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
+    "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21"
   },
   "gitHooks": {
