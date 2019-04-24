@@ -1,15 +1,27 @@
 <template>
-  <div class="map">
-    <div class="top-panel">
+  <v-layout column>
+    <v-flex shrink>
       <MapMainPanel/>
-    </div>
-    <div class="map-and-panels">
-      <div class="left-panel" v-show="leftPanelVisible"></div>
-      <div class="map-wrapper">
-        <MapboxMap/>
-      </div>
-    </div>
-  </div>
+    </v-flex>
+    <v-flex>
+      <v-layout fill-height align-space-around>
+        <v-flex shrink>
+          <transition name="expand" @ended="consle.log('aaa')" @enter="enter">
+            <v-card
+              color="red"
+              :width="leftPanelHeight"
+              height="100%"
+              @transitionend="rightPanelTransitionEnd"
+              @transitionbegin="rightPanelTransitionEnd"
+            ></v-card>
+          </transition>
+        </v-flex>
+        <v-flex>
+          <MapboxMap ref="map"/>
+        </v-flex>
+      </v-layout>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -23,46 +35,22 @@ export default {
     MapboxMap,
     MapMainPanel
   },
+  methods: {
+    rightPanelTransitionEnd() {
+      console.log('aaa');
+      this.$refs.map.resize();
+    },
+    enter(el, done) {
+      console.log('aaa');
+    }
+  },
   computed: {
-    leftPanelVisible() {
-      return this.$store.getters['leftPanel/VISIBLE'];
+    leftPanelHeight: {
+      get() {
+        return this.$store.getters['leftPanel/VISIBLE'] ? 100 : 0;
+      }
     }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.map {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.top-panel {
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-
-.map-and-panels {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-
-  display: flex;
-  flex-direction: row;
-}
-
-.left-panel {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 300px;
-}
-
-.map-wrapper {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-}
-</style>
 
