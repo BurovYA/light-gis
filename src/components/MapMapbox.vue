@@ -44,6 +44,15 @@ export default {
         paint: {}
       });
     });
+
+    this.$store.watch(
+      () => {
+        return this.$store.getters['leftPanel/VISIBLE'];
+      },
+      () => {
+        this._map.resize();
+      }
+    );
   }
 };
 </script>
@@ -62,4 +71,3 @@ export default {
   left: 0;
 }
 </style>
-

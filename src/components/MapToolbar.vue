@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dense>
+  <v-toolbar dense elevation-0 card>
     <v-btn-toggle multiple>
       <v-btn v-model="toggleDetails" small>{{ buttonTexts.details }}</v-btn>
       <v-btn v-model="toggleAddLayer" small>{{ buttonTexts.addLayer }}</v-btn>
