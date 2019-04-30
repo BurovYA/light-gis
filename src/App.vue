@@ -1,12 +1,25 @@
 <template>
   <v-app>
-    <v-navigation-drawer app></v-navigation-drawer>
-    <v-toolbar app></v-toolbar>
+    <v-navigation-drawer temporary app v-model="showNavigationDrawer"></v-navigation-drawer>
+    <v-toolbar app dense>
+      <v-btn @click="showNavigationDrawer = !showNavigationDrawer" icon>
+        <v-icon>menu</v-icon>
+      </v-btn>
+    </v-toolbar>
     <v-content>
-      <v-container fluid :fill-height="true">
+      <v-container fluid :fill-height="true" pa-0>
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer app></v-footer>
   </v-app>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      showNavigationDrawer: false
+    };
+  }
+};
+</script>

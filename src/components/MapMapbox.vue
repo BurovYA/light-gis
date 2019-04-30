@@ -11,7 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYnVyb3Z5YSIsImEiOiJjanVucnE3bHMweHRlM3pvNXAyc
 export default {
   methods: {
     resize() {
-      this._map.resize();
+      //this._map.resize();
     }
   },
   mounted() {
@@ -50,7 +50,7 @@ export default {
         return this.$store.getters['leftPanel/VISIBLE'];
       },
       () => {
-        this._map.resize();
+        //this._map.resize();
       }
     );
   }

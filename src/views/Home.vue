@@ -1,18 +1,20 @@
 <template>
-  <v-card height="100%" width="100%">
+  <v-card flat height="100%" width="100%">
     <v-layout column fill-height>
       <v-flex shrink>
         <lg-map-toolbar />
       </v-flex>
       <v-flex>
         <v-layout fill-height align-space-around>
-          <v-flex v-show="leftPanelVisible" shrink>
-            <v-card height="100%" flat>
-              <v-card-actions>
-                <v-btn>test</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
+          <v-slide-x-transition>
+            <v-flex v-show="leftPanelVisible" shrink>
+              <v-card height="100%" flat>
+                <v-card-actions>
+                  <v-btn>test</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-slide-x-transition>
           <v-flex>
             <lg-map-mapbox ref="map" />
           </v-flex>
