@@ -1,8 +1,8 @@
 <template>
-  <v-toolbar dense card>
+  <v-toolbar dense floating absolute>
     <v-btn-toggle multiple>
       <v-btn v-model="toggleDetails" small>{{ buttonTexts.details }}</v-btn>
-      <v-btn v-model="toggleAddLayer" small>{{ buttonTexts.addLayer }}</v-btn>
+      <v-btn v-model="toggleAddLayer" small @click="aaa">{{ buttonTexts.addLayer }}</v-btn>
     </v-btn-toggle>
   </v-toolbar>
 </template>

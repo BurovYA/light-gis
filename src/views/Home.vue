@@ -1,45 +1,40 @@
 <template>
-  <v-card flat height="100%" width="100%">
-    <v-layout column fill-height>
-      <v-flex shrink>
-        <lg-map-toolbar />
-      </v-flex>
-      <v-flex>
-        <v-layout fill-height align-space-around>
-          <v-slide-x-transition>
-            <v-flex v-show="leftPanelVisible" shrink>
-              <v-card height="100%" flat>
-                <v-card-actions>
-                  <v-btn>test</v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-flex>
-          </v-slide-x-transition>
-          <v-flex>
-            <lg-map-mapbox ref="map" />
-          </v-flex>
-        </v-layout>
-      </v-flex>
-    </v-layout>
+  <v-card flat height="100%" width="100%" tile>
+    <v-navigation-drawer absolute floating stateless v-model="leftPanelVisible">
+      <v-tabs>
+        <v-tab :key="1">
+          <v-icon>layers</v-icon>
+        </v-tab>
+        <v-tab-item :key="1"></v-tab-item>
+        <v-tab :key="2">
+          <v-icon>list</v-icon>
+        </v-tab>
+        <v-tab-item :key="2"></v-tab-item>
+      </v-tabs>
+    </v-navigation-drawer>
+    <lg-map-mapbox ref="map" />
   </v-card>
 </template>
 
 <script>
-// @ is an alias to /src
 import MapMapbox from '@/components/MapMapbox.vue';
-import MapToolbar from '@/components/MapToolbar.vue';
+//import MapToolbar from '@/components/MapToolbar.vue';
 
 export default {
   name: 'home',
   components: {
-    LgMapMapbox: MapMapbox,
-    LgMapToolbar: MapToolbar
+    LgMapMapbox: MapMapbox
+    //LgMapToolbar: MapToolbar
+  },
+  data() {
+    return {};
   },
   computed: {
     leftPanelVisible: {
       get() {
         return this.$store.getters['leftPanel/VISIBLE'];
-      }
+      },
+      set() {}
     }
   }
 };
