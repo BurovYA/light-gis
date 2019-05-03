@@ -9,11 +9,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnVyb3Z5YSIsImEiOiJjanVucnE3bHMweHRlM3pvNXAycXllaHl5In0.ytKUDnITJq8JScaXHW3qzQ';
 
 export default {
-  methods: {
-    resize() {
-      //this._map.resize();
-    }
-  },
   mounted() {
     this._map = new mapboxgl.Map({
       container: this.$el,
@@ -44,15 +39,6 @@ export default {
         paint: {}
       });
     });
-
-    this.$store.watch(
-      () => {
-        return this.$store.getters['leftPanel/VISIBLE'];
-      },
-      () => {
-        //this._map.resize();
-      }
-    );
   }
 };
 </script>
